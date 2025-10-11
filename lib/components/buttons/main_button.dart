@@ -11,7 +11,7 @@ class MainButton extends StatelessWidget {
     this.width = double.infinity,
     this.bgColor = AppColors.primaryColor,
     this.borderColor,
-    this.textColor
+    this.textColor,
   });
   final String text;
   final Function() onPressed;
@@ -39,7 +39,9 @@ class MainButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           text,
-          style: TextStyles.styleSize16(color:textColor?? AppColors.whiteColor),
+          style: TextStyles.styleSize16(
+            color: textColor ?? AppColors.whiteColor,
+          ),
         ),
       ),
     );

@@ -24,6 +24,7 @@ class TextStyles {
   }) {
     return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
   }
+
   static TextStyle styleSize18({
     Color? color,
     double fontSize = 18,
@@ -31,6 +32,7 @@ class TextStyles {
   }) {
     return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
   }
+
   static TextStyle styleSize16({
     Color? color,
     double fontSize = 16,
@@ -38,6 +40,7 @@ class TextStyles {
   }) {
     return TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color);
   }
+
   static TextStyle styleSize14({
     Color? color,
     double fontSize = 14,

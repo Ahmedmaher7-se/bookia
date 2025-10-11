@@ -1,8 +1,6 @@
 // import 'package:hive/hive.dart';
 // import 'package:taskati_ui/core/models/task_model.dart';
 
-
-
 // class LocalHelper {
 //   static late Box userBox;
 //   static late Box<TaskModel> taskBox;

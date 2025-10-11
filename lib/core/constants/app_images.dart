@@ -5,6 +5,8 @@ class AppImages {
   static const String googleSvg = 'assets/images/google.svg';
   static const String sucessSvg = 'assets/images/Success.svg';
   static const String welcome = 'assets/images/welcome.png';
+  static const String rectangle = 'assets/images/Rectangle.png';
+  static const String dots = 'assets/images/dots.png';
 
   static const String backSvg = 'assets/icons/back.svg';
   static const String bookmarkSvg = 'assets/icons/Bookmark.svg';
