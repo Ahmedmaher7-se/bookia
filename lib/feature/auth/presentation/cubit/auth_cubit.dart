@@ -21,7 +21,7 @@ class AuthCubit extends Cubit<AuthState> {
         name: usernameController.text,
         email: emailController.text,
         password: passwordController.text,
-        confirmPassord: confirmpasswordController.text,
+        confirmPassword: confirmpasswordController.text,
       ),
     );
 
