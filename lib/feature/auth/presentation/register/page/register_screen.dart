@@ -1,8 +1,8 @@
-import 'dart:developer';
 
 import 'package:bookia/components/app_bar/app_bar_with_back.dart';
 import 'package:bookia/components/buttons/main_button.dart';
 import 'package:bookia/components/inputs/custom_text_field.dart';
+import 'package:bookia/components/inputs/password_text_field.dart';
 import 'package:bookia/core/functions/dialouge.dart';
 import 'package:bookia/core/routes/navigation.dart';
 import 'package:bookia/core/routes/routes.dart';
@@ -49,8 +49,7 @@ class RegisterScreen extends StatelessWidget {
           showLoadingDialog(context);
         } else if (state is AuthSuccessState) {
           //hide loading
-          pop(context);
-          log('Registeration Successful');
+          goToBase(context, Routes.main);
           //succes
         } else if (state is AuthErrorState) {
           // hide loading
@@ -93,7 +92,7 @@ class RegisterScreen extends StatelessWidget {
                   },
                 ),
                 Gap(15),
-                CustomTextField(
+                PasswordTextField(
                   controller: cubit.passwordController,
                   hint: 'Password',
                   validator: (value) {
@@ -103,7 +102,7 @@ class RegisterScreen extends StatelessWidget {
                     return null;
                   },
                 ),
-                CustomTextField(
+                PasswordTextField(
                   controller: cubit.confirmpasswordController,
                   hint: 'Confirm Password',
                 ),

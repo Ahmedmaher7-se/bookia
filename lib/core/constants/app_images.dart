@@ -16,4 +16,5 @@ class AppImages {
   static const String homeSvg = 'assets/icons/Home.svg';
   static const String logoutSvg = 'assets/icons/logout.svg';
   static const String searchSvg = 'assets/icons/search.svg';
+  static const String profileSvg = 'assets/icons/Profile.svg';
 }

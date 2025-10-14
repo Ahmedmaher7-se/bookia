@@ -1,45 +1,56 @@
-// import 'package:hive/hive.dart';
-// import 'package:taskati_ui/core/models/task_model.dart';
+import 'dart:convert';
 
-// class LocalHelper {
-//   static late Box userBox;
-//   static late Box<TaskModel> taskBox;
+import 'package:bookia/feature/auth/data/models/auth_response/data.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-//   static String kName = 'name';
-//   static String kImage = 'image';
-//   static String kIsUploaded = 'isUploaded';
-//   static String kIsDark = 'isDark';
+class SharedPref {
+  static late SharedPreferences pref;
 
-//   static init() async {
-//     Hive.registerAdapter<TaskModel>(TaskModelAdapter());
-//     userBox = await Hive.openBox('userBox');
-//     taskBox = await Hive.openBox<TaskModel>('taskBox');
-//   }
+  static const String kUserData = 'userData';
 
-//   static putData(String key, dynamic value) {
-//     userBox.put(key, value);
-//   }
+  static init() async {
+    pref = await SharedPreferences.getInstance();
+  }
 
-//   static getData(String key) {
-//     return userBox.get(key);
-//   }
+  static saveUserData(UserModel? model) {
+    if (model == null) return;
+    // object to json
+    var json = model.toJson();
+    // map to string
+    var jsonToString = jsonEncode(json);
 
-//   static putTask(String key, TaskModel value) {
-//     taskBox.put(key, value);
-//   }
+    saveData(kUserData, jsonToString);
+  }
 
-//   static TaskModel? getTask(String key) {
-//     return taskBox.get(key);
-//   }
+  static UserModel? getUserData() {
+    String? stringData = getData(kUserData);
 
-//   static putUserData(String name, String image) {
-//     putData(kName, name);
-//     putData(kImage, image);
-//     putData(kIsUploaded, true);
-//   }
+    if (stringData == null) return null;
 
-//   static changeTheme(){
-//     bool cachedTheme = userBox.get(kIsDark) ?? false;
-//     userBox.put(kIsDark, !cachedTheme);
-//   }
-// }
+    var stringToJson = jsonDecode(stringData);
+
+    return UserModel.fromJson(stringToJson);
+  }
+
+  static saveData(String key, dynamic value) {
+    if (value is int) {
+      pref.setInt(key, value);
+    } else if (value is String) {
+      pref.setString(key, value);
+    } else if (value is bool) {
+      pref.setBool(key, value);
+    } else if (value is double) {
+      pref.setDouble(key, value);
+    } else if (value is List<String>) {
+      pref.setStringList(key, value);
+    }
+  }
+
+  static dynamic getData(String key) {
+    return pref.get(key);
+  }
+
+  static remove(String key) async {
+    await pref.remove(key);
+  }
+}

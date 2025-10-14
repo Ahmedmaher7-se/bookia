@@ -9,7 +9,7 @@ pushWithReplacement(BuildContext context, String route) {
   context.pushReplacement(route);
 }
 
-pushAndRemoveUntil(BuildContext context, String route) {
+goToBase(BuildContext context, String route) {
   context.go(route);
 }
 

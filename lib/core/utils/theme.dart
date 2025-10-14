@@ -16,6 +16,12 @@ class AppTheme {
       seedColor: AppColors.primaryColor,
       onSurface: AppColors.darkColor,
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.whiteColor,
+      type: BottomNavigationBarType.fixed,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+    ),
     dividerTheme: DividerThemeData(color: AppColors.borderColor),
     inputDecorationTheme: InputDecorationTheme(
       fillColor: AppColors.accentColor,
