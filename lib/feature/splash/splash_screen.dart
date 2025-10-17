@@ -1,7 +1,7 @@
 import 'package:bookia/core/constants/app_images.dart';
 import 'package:bookia/core/routes/navigation.dart';
 import 'package:bookia/core/routes/routes.dart';
-import 'package:bookia/core/services/local/local_helper.dart';
+import 'package:bookia/core/services/local/shared_pref.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     var userData = SharedPref.getUserData();
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       if (userData != null) {
         pushWithReplacement(context, Routes.main);
       } else {

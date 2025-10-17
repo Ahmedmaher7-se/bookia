@@ -1,8 +1,9 @@
 import 'package:bookia/core/constants/app_images.dart';
+import 'package:bookia/feature/home/presentation/widgets/best_seller_builder.dart';
 import 'package:bookia/feature/home/presentation/widgets/home_slider.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -22,10 +23,14 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            HomeSlider(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              HomeSlider(),
+              Gap(20),
+              BestSellerBuilder(),
+            ],
+          ),
         ),
       ),
     );
