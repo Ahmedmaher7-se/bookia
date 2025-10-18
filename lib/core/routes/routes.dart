@@ -9,32 +9,38 @@ import 'package:go_router/go_router.dart';
 
 class Routes {
   static const String splashScreen = '/';
-  static const String welcome = '/welcomeScreen';
+  static const String welcome = '/welcome';
   static const String login = '/login';
   static const String register = '/register';
   static const String main = '/main';
+  // static const String details = '/details';
 
   static GoRouter routes = GoRouter(
     routes: [
-      GoRoute(path: splashScreen, builder: (context, state) => SplashScreen()),
-
-      GoRoute(path: welcome, builder: (context, state) => WelcomeScreen()),
-
+      GoRoute(
+        path: splashScreen,
+        builder: (context, state) => const SplashScreen(),
+      ),
+      GoRoute(
+        path: welcome,
+        builder: (context, state) => const WelcomeScreen(),
+      ),
       GoRoute(
         path: login,
         builder: (context, state) => BlocProvider(
           create: (context) => AuthCubit(),
-          child: LoginScreen(),
+          child: const LoginScreen(),
         ),
       ),
       GoRoute(
         path: register,
         builder: (context, state) => BlocProvider(
           create: (context) => AuthCubit(),
-          child: RegisterScreen(),
+          child: const RegisterScreen(),
         ),
       ),
-       GoRoute(path: main, builder: (context, state) => MainAppScreen()),
+      GoRoute(path: main, builder: (context, state) => const MainAppScreen()),
+     
     ],
   );
 }

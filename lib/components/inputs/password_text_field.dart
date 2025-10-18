@@ -39,7 +39,9 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         hintText: widget.hint,
         suffixIcon: GestureDetector(
           onTap: () {
-            _obscureText = !_obscureText;
+            setState(() {
+              _obscureText = !_obscureText;
+            });
           },
           child: Row(
             mainAxisSize: MainAxisSize.min,

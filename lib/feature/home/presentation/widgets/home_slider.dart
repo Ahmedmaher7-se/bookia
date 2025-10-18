@@ -54,7 +54,7 @@ class _HomeSliderState extends State<HomeSlider> {
         Gap(15),
         AnimatedSmoothIndicator(
           activeIndex: activeIndex,
-          count: 6,
+          count: 3,
           effect: ExpandingDotsEffect(
             dotHeight: 7,
             dotWidth: 7,

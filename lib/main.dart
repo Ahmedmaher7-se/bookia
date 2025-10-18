@@ -11,7 +11,7 @@ Future<void> main() async {
   DioProvider.init();
   await SharedPref.init();
   runApp(
-    DevicePreview(enabled: kDebugMode, builder: (context) => const MainApp()),
+    DevicePreview(enabled: false, builder: (context) => const MainApp()),
   );
 }
 

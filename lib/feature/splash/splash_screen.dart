@@ -4,7 +4,7 @@ import 'package:bookia/core/routes/routes.dart';
 import 'package:bookia/core/services/local/shared_pref.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
 class SplashScreen extends StatefulWidget {
