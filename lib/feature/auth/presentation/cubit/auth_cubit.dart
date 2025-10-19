@@ -28,7 +28,7 @@ class AuthCubit extends Cubit<AuthState> {
     if (res != null) {
       emit(AuthSuccessState());
     } else {
-      emit(AuthErrorState(message:'Registeration Failed' ));
+      emit(AuthErrorState(message: 'Registeration Failed'));
     }
   }
 

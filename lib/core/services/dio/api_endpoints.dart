@@ -3,4 +3,7 @@ class ApiEndpoints {
 
   static const String login = '/login';
   static const String register = '/register';
+
+  //home
+  static const String productBestSeller = '/products-bestseller';
 }

@@ -1,12 +1,13 @@
-import 'package:bookia/components/buttons/main_button.dart';
-import 'package:bookia/core/constants/app_images.dart';
-import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
+import 'package:bookia/feature/home/data/models/best_seller_response/product.dart';
+import 'package:bookia/feature/home/presentation/widgets/book_card.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class BestSellerBuilder extends StatelessWidget {
-  const BestSellerBuilder({super.key});
+  const BestSellerBuilder({super.key, required this.books});
+
+  final List<Product> books;
 
   @override
   Widget build(BuildContext context) {
@@ -24,52 +25,9 @@ class BestSellerBuilder extends StatelessWidget {
             crossAxisSpacing: 10,
             mainAxisExtent: 300,
           ),
+          itemCount: books.length,
           itemBuilder: (context, index) {
-            return Container(
-              decoration: BoxDecoration(
-                color: AppColors.cardColor,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: ClipRRect(
-                      borderRadius: BorderRadiusGeometry.circular(10),
-                      child: Image.asset(
-                        AppImages.welcome,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Gap(15),
-                  SizedBox(
-                    height: 45,
-                    child: Text(
-                      index == 1 ? "Book Name" : 'Book Name Name',
-                      style: TextStyles.styleSize16(),
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                  Gap(5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('\$20', style: TextStyles.styleSize16()),
-                      MainButton(
-                        height: 30,
-                        width: 75,
-                        bgColor: AppColors.darkColor,
-                        text: 'Buy',
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            );
+            return BookCard(book: books[index]);
           },
         ),
       ],

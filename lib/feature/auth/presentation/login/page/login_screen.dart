@@ -1,4 +1,3 @@
-
 import 'package:bookia/components/app_bar/app_bar_with_back.dart';
 import 'package:bookia/components/buttons/main_button.dart';
 import 'package:bookia/components/inputs/custom_text_field.dart';
@@ -85,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                 PasswordTextField(
                   controller: cubit.passwordController,
                   hint: 'Enter your password',
-                 
+
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please Enter Email';

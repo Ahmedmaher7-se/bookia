@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MainAppScreen extends StatefulWidget {
-  const MainAppScreen({super.key}); 
+  const MainAppScreen({super.key});
 
   @override
   State<MainAppScreen> createState() => _MainAppScreenState();

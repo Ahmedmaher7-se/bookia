@@ -40,7 +40,6 @@ class Routes {
         ),
       ),
       GoRoute(path: main, builder: (context, state) => const MainAppScreen()),
-     
     ],
   );
 }
