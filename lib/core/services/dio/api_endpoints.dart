@@ -6,4 +6,5 @@ class ApiEndpoints {
 
   //home
   static const String productBestSeller = '/products-bestseller';
+  static const String sliders = '/sliders';
 }

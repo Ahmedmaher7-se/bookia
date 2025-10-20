@@ -3,6 +3,7 @@ import 'package:bookia/core/constants/app_images.dart';
 import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/feature/home/data/models/best_seller_response/product.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -24,11 +25,11 @@ class BookCard extends StatelessWidget {
           Expanded(
             child: ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(10),
-              child: Image.network(
-                book.image ?? '',
+              child: CachedNetworkImage(
+                imageUrl: book.image ?? '',
                 width: double.infinity,
                 fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
+                errorWidget: (context, error, stackTrace) {
                   return Image.asset(
                     AppImages.welcome,
                     width: double.infinity,

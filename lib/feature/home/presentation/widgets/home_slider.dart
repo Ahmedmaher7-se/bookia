@@ -1,12 +1,15 @@
-import 'package:bookia/core/constants/app_images.dart';
 import 'package:bookia/core/utils/colors.dart';
+import 'package:bookia/feature/home/data/models/slider_response/slider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeSlider extends StatefulWidget {
-  const HomeSlider({super.key});
+  const HomeSlider({super.key, required this.sliders});
+
+  final List<SliderModel> sliders;
 
   @override
   State<HomeSlider> createState() => _HomeSliderState();
@@ -19,13 +22,13 @@ class _HomeSliderState extends State<HomeSlider> {
     return Column(
       children: [
         CarouselSlider.builder(
-          itemCount: 3,
+          itemCount: widget.sliders.length,
           itemBuilder:
               (BuildContext context, int itemIndex, int pageViewIndex) {
                 return ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(10),
-                  child: Image.asset(
-                    AppImages.welcome,
+                  child: CachedNetworkImage(
+                    imageUrl: widget.sliders[itemIndex].image ?? "",
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
