@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    HomeSlider(sliders :cubit.sliders),
+                    HomeSlider(sliders: cubit.sliders),
                     Gap(20),
                     BestSellerBuilder(books: cubit.products),
                   ],

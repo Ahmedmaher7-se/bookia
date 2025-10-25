@@ -20,7 +20,6 @@ class AppBarWithBack extends StatelessWidget implements PreferredSizeWidget {
         child: SvgPicture.asset(AppImages.backSvg),
       ),
       actions: action,
-      
     );
   }
 

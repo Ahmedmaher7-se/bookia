@@ -70,7 +70,7 @@ class BookCard extends StatelessWidget {
                   height: 30,
                   width: 75,
                   bgColor: AppColors.darkColor,
-                  text: 'Buy',
+                  text: 'buy',
                   onPressed: () {},
                 ),
               ],

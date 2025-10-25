@@ -4,6 +4,7 @@ import 'package:bookia/feature/home/data/models/slider_response/slider.dart';
 import 'package:bookia/feature/home/data/models/slider_response/slider_response.dart';
 import 'package:bookia/feature/home/data/repo/home_repo.dart';
 import 'package:bookia/feature/home/presentation/cubit/home_state.dart';
+import 'package:bookia/feature/wishlist/data/repo/wishlist_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -26,6 +27,18 @@ class HomeCubit extends Cubit<HomeState> {
     if (sliderRes != null || bestSellerRes != null) {
       products = bestSellerRes?.data?.products ?? [];
       sliders = sliderRes?.data?.sliders ?? [];
+      emit(HomeSuccessState());
+    } else {
+      emit(HomeErrorState());
+    }
+  }
+
+  
+  addToWishList({required int productId}) async {
+    emit(HomeLoadingState());
+    var res = await WishlistRepo.removeFromWishList(productId: productId);
+
+    if (res != null) {
       emit(HomeSuccessState());
     } else {
       emit(HomeErrorState());

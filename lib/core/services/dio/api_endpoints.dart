@@ -7,4 +7,9 @@ class ApiEndpoints {
   //home
   static const String productBestSeller = '/products-bestseller';
   static const String sliders = '/sliders';
+
+  //wishlist
+  static const String wishlist = '/wishlist';
+  static const String addToWishList = '/add-to-wishlist';
+  static const String removeFromWishList = '/remove-from-wishlist';
 }

@@ -2,7 +2,7 @@ import 'package:bookia/components/app_bar/app_bar_with_back.dart';
 import 'package:bookia/components/buttons/main_button.dart';
 import 'package:bookia/components/inputs/custom_text_field.dart';
 import 'package:bookia/components/inputs/password_text_field.dart';
-import 'package:bookia/core/functions/dialouge.dart';
+import 'package:bookia/core/functions/dialogs.dart';
 import 'package:bookia/core/routes/navigation.dart';
 import 'package:bookia/core/routes/routes.dart';
 import 'package:bookia/core/utils/colors.dart';
@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
         } else if (state is AuthErrorState) {
           // hide loading
           pop(context);
-          showErrorDialog(context, state.message);
+          showMyDialog(context, state.message);
         }
       },
       child: Padding(
