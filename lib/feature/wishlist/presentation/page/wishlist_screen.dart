@@ -44,6 +44,9 @@ class WishlistScreen extends StatelessWidget {
                       productId: cubit.books[index].id ?? 0,
                     );
                   },
+                  onRefresh: () {
+                    cubit.getWishList();
+                  },
                 );
               },
             );
@@ -55,21 +58,21 @@ class WishlistScreen extends StatelessWidget {
 
   Center _emptyUi() {
     return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    AppImages.bookmarkSvg,
-                    height: 100,
-                    colorFilter: ColorFilter.mode(
-                      AppColors.primaryColor,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  Gap(20),
-                  Text('No Book Added To WishList'),
-                ],
-              ),
-            );
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            AppImages.bookmarkSvg,
+            height: 100,
+            colorFilter: ColorFilter.mode(
+              AppColors.primaryColor,
+              BlendMode.srcIn,
+            ),
+          ),
+          Gap(20),
+          Text('No Book Added To WishList'),
+        ],
+      ),
+    );
   }
 }

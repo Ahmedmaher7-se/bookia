@@ -1,3 +1,5 @@
+import 'package:bookia/core/routes/navigation.dart';
+import 'package:bookia/core/routes/routes.dart';
 import 'package:bookia/core/utils/colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/feature/wishlist/data/models/wish_list_response/datum.dart';
@@ -6,10 +8,16 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class WishListCard extends StatelessWidget {
-  const WishListCard({super.key, required this.book, required this.onDelete});
+  const WishListCard({
+    super.key,
+    required this.book,
+    required this.onDelete,
+    required this.onRefresh,
+  });
 
   final WishlistProduct book;
   final Function() onDelete;
+  final Function() onRefresh;
 
   @override
   Widget build(BuildContext context) {
@@ -28,50 +36,63 @@ class WishListCard extends StatelessWidget {
       onDismissed: (direction) {
         onDelete();
       },
-      child: Container(
-        height: 140,
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: AppColors.cardColor,
-          borderRadius: BorderRadius.circular(5),
-        ),
 
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: CachedNetworkImage(
-                imageUrl: book.image ?? '',
-                height: 120,
-                width: 100,
-                fit: BoxFit.cover,
-              ),
-            ),
+      child: GestureDetector(
+        onTap: () {
+          pushTo(context, Routes.details, extra: book.mapToProduct()).then((
+            value,
+          ) {
+            onRefresh();
+          });
+        },
+        child: Container(
+          height: 140,
+          padding: EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            color: AppColors.cardColor,
+            borderRadius: BorderRadius.circular(5),
+          ),
 
-            Gap(15),
-
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    book.name ?? '',
-                    style: TextStyles.styleSize18(),
-                    maxLines: 1,
+          child: Row(
+            children: [
+              Hero(
+                tag: book.id ?? '',
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: CachedNetworkImage(
+                    imageUrl: book.image ?? '',
+                    height: 120,
+                    width: 100,
+                    fit: BoxFit.cover,
                   ),
-                  Gap(10),
-                  Text('\$${book.price}', style: TextStyles.styleSize16()),
-                  Gap(10),
-                  Text(
-                    book.description ?? '',
-                    style: TextStyles.styleSize14(color: AppColors.greyColor),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+                ),
               ),
-            ),
-          ],
+
+              Gap(15),
+
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      book.name ?? '',
+                      style: TextStyles.styleSize18(),
+                      maxLines: 1,
+                    ),
+                    Gap(10),
+                    Text('\$${book.price}', style: TextStyles.styleSize16()),
+                    Gap(10),
+                    Text(
+                      book.description ?? '',
+                      style: TextStyles.styleSize14(color: AppColors.greyColor),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
